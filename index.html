@@ -2,28 +2,37 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#315640"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#ed4d8a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
 <title>Meu Treino</title>
 <style>
-:root{--pink:#e85c91;--pink-light:#fde8f0;--navy:#18233d;--beige:#f8f7fa;--paper:#fff;--line:#e5e5ec;--ink:#18233d;--muted:#667085}
-*{box-sizing:border-box}body{margin:0;background:var(--beige);color:var(--ink);font:16px system-ui,-apple-system,sans-serif;padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom)}
-main{max-width:650px;margin:auto;padding:14px 0 28px}button,input{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:10px 13px}
+:root{--pink:#ed4d8a;--pink2:#ff7eaa;--pink-light:#fde7f0;--navy:#111b36;--beige:#f7f7fa;--paper:#fff;--line:#e1e2e9;--ink:#111b36;--muted:#606a80}
+*{box-sizing:border-box}body{margin:0;background:var(--beige);color:var(--ink);font:16px/1.4 system-ui,-apple-system,BlinkMacSystemFont,sans-serif;padding:env(safe-area-inset-top) 10px calc(88px + env(safe-area-inset-bottom))}
+main{max-width:680px;margin:auto;padding:14px 0 22px}button,input{font:inherit}button{cursor:pointer;border:0;border-radius:13px;padding:10px 13px}
 .top{display:flex;justify-content:space-between;align-items:center}.eyebrow,.muted{font-size:12px;color:var(--muted)}
-h1{font-size:27px;margin:3px 0;font-weight:850;letter-spacing:-.7px}h2{font-size:24px;margin:3px 0;letter-spacing:-.5px}h3{margin:0;font-size:16px}
-.hero{background:linear-gradient(135deg,#18233d,#344568);color:#fff;padding:19px;border-radius:22px;margin:14px 0;box-shadow:0 8px 24px #18233d18}
-.days{display:flex;gap:7px;overflow:auto;margin:15px 0;padding-bottom:3px}.day{background:#f0eff3;color:var(--navy);border:1px solid transparent;min-width:68px;flex:1}.day.active,.primary{background:var(--pink);color:white}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:14px;margin:10px 0;box-shadow:0 3px 12px #18233d06}
-.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.tag{font-size:11px;background:var(--pink-light);padding:5px 8px;border-radius:20px;color:#a3295b}
-.guide{font-size:13px;line-height:1.55;color:#4f5870;margin:12px 0}.sets{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.set{background:#f7f6fa;border:1px solid #dedfe8;font-size:12px;color:var(--navy)}.set.done{background:var(--pink);color:white;border-color:var(--pink)}
+h1{font-size:27px;margin:3px 0;font-weight:850;letter-spacing:-.8px}h2{font-size:25px;margin:3px 0;letter-spacing:-.6px}h3{margin:0;font-size:16px;font-weight:800}
+.hero{background:#fff;color:var(--navy);padding:17px 16px;border-radius:22px;margin:14px 0;border:1px solid var(--line);box-shadow:0 3px 14px #111b3608}
+.days{display:flex;gap:6px;overflow:auto;margin:15px 0 20px;padding-bottom:3px}.day{background:#f1f0f4;color:var(--navy);border:1px solid transparent;min-width:68px;flex:1;font-weight:700}.day.active,.primary{background:linear-gradient(140deg,#ffafd0,#f46d9e);color:#111b36}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:13px;margin:9px 0;box-shadow:0 2px 9px #111b3605}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.tag{font-size:11px;background:var(--pink-light);padding:5px 8px;border-radius:20px;color:#a31955;font-weight:700}
+.guide{font-size:13px;line-height:1.55;color:#424c63;margin:12px 0}.sets{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.set{background:#f8f7fa;border:1px solid #dedfe8;font-size:12px;color:var(--navy)}.set.done{background:var(--pink);color:white;border-color:var(--pink)}
 .load{width:100%;border:1px solid #dedfe8;background:#fff;border-radius:12px;padding:10px;color:var(--ink);margin:7px 0}.link{color:#b83268;font-size:13px;font-weight:700;text-decoration:none}
 .progress{height:7px;background:#ecebf1;border-radius:9px;overflow:hidden;margin:10px 0}.bar{height:100%;background:var(--pink)}.secondary{background:var(--pink-light);color:#a3295b}
 .footer{display:flex;justify-content:space-between;gap:8px;margin:15px 0}.history{font-size:13px;line-height:1.6}.notice{font-size:12px;color:#697286;margin:10px 2px}
-.exercise-art{width:100%;height:150px;object-fit:contain;background:linear-gradient(135deg,#fff6fa,#f2f2f8);border-radius:16px;margin:12px 0 8px;display:block}
-.ex-title{display:flex;align-items:center;gap:10px}.mini-art{width:68px;height:58px;object-fit:contain;background:#f8f2f6;border-radius:12px;flex-shrink:0}
+.exercise-art{width:100%;height:220px;object-fit:contain;background:linear-gradient(135deg,#fff8fb,#f4f4f8);border-radius:17px;margin:12px 0 8px;display:block}
+.ex-title{display:flex;align-items:center;gap:10px}.mini-art{width:78px;height:66px;object-fit:contain;background:#f8f2f6;border-radius:13px;flex-shrink:0}
+.exercise-list{border:1px solid var(--line);border-radius:17px;padding:4px 10px;background:white}
+.exercise-list .card{border:0;border-bottom:1px solid var(--line);border-radius:0;margin:0;padding:9px 0;box-shadow:none}.exercise-list .card:last-child{border-bottom:0}
+.bottom-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(12px);border:1px solid #e5e5eb;border-radius:22px 22px 0 0;padding:9px 10px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;max-width:680px;margin:auto}
+.bottom-nav button{background:transparent;color:#555d6e;display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 12px;font-size:11px}.bottom-nav button.active{color:var(--pink);font-weight:800}.bottom-nav .navicon{font-size:21px;line-height:1}
+.detail-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.detail-head h2{text-align:center;flex:1;font-size:22px}.pink-banner{background:linear-gradient(100deg,#fde7f0,#fff0f6);color:#a31955;font-weight:850;border-radius:15px;padding:13px;display:flex;gap:12px;align-items:center;margin:10px 0}
+.step{display:flex;gap:10px;margin:10px 0;font-size:14px;line-height:1.35}.stepnum{flex:0 0 27px;height:27px;border-radius:50%;background:linear-gradient(140deg,#ff9fc4,#ed4d8a);color:#fff;font-weight:800;display:grid;place-items:center}
+.tip{background:#fde7f0;color:#30384c;border-radius:15px;padding:12px;font-size:13px;margin:12px 0}.setrow{display:flex;align-items:center;gap:9px;padding:10px 5px;border-bottom:1px solid var(--line)}.setrow:last-child{border-bottom:0}.setrow input[type=checkbox]{width:22px;height:22px;accent-color:var(--pink)}.setrow label{flex:1;font-weight:750}
+@media(min-width:620px){main{padding-top:22px}.exercise-art{height:250px}}
 </style></head>
 <body><main>
-<header class="top"><div><div class="eyebrow">SEU GUIA DE MUSCULAÇÃO</div><h1>Meu Treino <span style="color:#819775">✳</span></h1></div><div style="font-size:26px">🌿</div></header>
-<div class="hero"><div style="font-size:11px;letter-spacing:1px;color:#d8e5d3">SUA ROTINA</div><strong style="font-size:22px;display:block;margin:5px 0">Vamos treinar?</strong><div style="font-size:13px;color:#e1eadb">5 dias · força · constância</div></div>
+<header class="top"><div><div class="eyebrow">SEU GUIA DE MUSCULAÇÃO</div><h1>Meu Treino <span style="display:inline-block;background:#fde7f0;color:#ed4d8a;border-radius:12px;padding:4px 8px;font-size:20px">✣</span></h1></div><div style="font-size:25px;color:#18233d">⚙</div></header>
+<div class="hero"><div style="font-size:11px;letter-spacing:1px;color:#606a80">TREINO DO DIA</div><strong style="font-size:24px;display:block;margin:5px 0">Sua rotina, no seu ritmo</strong><div style="font-size:13px;color:#606a80">5 dias · força · constância</div></div>
 <nav class="days" id="days"></nav><section id="content"></section><section class="card"><div class="row"><h3>Histórico de treinos</h3><button class="secondary" id="historyBtn">Ver histórico</button></div><div id="history" class="history" hidden></div></section>
 <div class="notice">Se estiver retornando após pausa, comece leve. Use cargas controladas e ajuste os exercícios com sua personal. O registro fica salvo neste aparelho/navegador.</div>
 </main>
@@ -63,36 +72,42 @@ const W=[
 ["Cadeira abdutora",3,12,15,60,"Glúteo médio","Abra as pernas com controle e segure brevemente."],
 ["Cadeira extensora",3,12,15,60,"Quadríceps","Estenda os joelhos com controle e retorne lentamente."]]}];
 function exerciseIllustration(name){
- const label=name.toLowerCase();
- let machine="machine";
- if(label.includes("leg")||label.includes("press")) machine="press";
- else if(label.includes("extensora")) machine="chair";
- else if(label.includes("flexora")) machine="curl";
- else if(label.includes("barra")||label.includes("stiff")||label.includes("terra")||label.includes("sumô")||label.includes("sumo")) machine="bar";
- else if(label.includes("puxada")||label.includes("pulldown")||label.includes("remada")) machine="cable";
- else if(label.includes("supino")||label.includes("peito")) machine="bench";
- else if(label.includes("elevação")||label.includes("desenvolvimento")) machine="shoulder";
- return `<svg class="exercise-art" viewBox="0 0 360 170" role="img" aria-label="Ilustração de referência para ${name}">
- <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8fb"/><stop offset="1" stop-color="#f1f2f8"/></linearGradient></defs>
- <rect width="360" height="170" rx="18" fill="url(#bg)"/>
- <g stroke="#38445d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
- ${machine==="press"?'<path d="M65 140 L120 140 L165 55 L210 55 L255 140 L310 140 M115 130 L165 65 M235 65 L275 130 M175 48 L235 48"/><path d="M210 42 L250 42 L250 70 L210 70 Z" fill="#59647c"/>':
- machine==="chair"?'<path d="M100 130 L100 70 L160 70 L190 130 M100 95 L205 95 M125 130 L225 130"/><rect x="155" y="62" width="45" height="13" rx="5" fill="#59647c"/><path d="M195 95 L250 115"/>':
- machine==="curl"?'<path d="M75 130 L290 130 M95 115 L130 65 L220 65 L260 115 M125 65 L125 45 M215 65 L215 45"/><rect x="120" y="58" width="105" height="15" rx="5" fill="#59647c"/>':
- machine==="bar"?'<path d="M60 135 L300 135 M100 135 L130 90 M230 90 L260 135 M90 80 L270 80"/><circle cx="85" cy="80" r="18" fill="#59647c"/><circle cx="275" cy="80" r="18" fill="#59647c"/>':
- machine==="cable"?'<path d="M80 135 L80 35 L280 35 L280 135 M80 55 L280 55 M180 55 L180 105"/><rect x="165" y="100" width="30" height="18" rx="4" fill="#59647c"/>':
- machine==="bench"?'<path d="M70 125 L290 125 M110 125 L90 145 M250 125 L270 145 M90 70 L270 70 M100 70 L100 45 M260 70 L260 45"/><path d="M75 45 L285 45"/>':
- '<path d="M95 135 L95 55 L265 55 L265 135 M95 90 L265 90 M180 55 L180 30"/><rect x="160" y="25" width="40" height="12" rx="5" fill="#59647c"/>'}
- </g>
- <g stroke="#b94c79" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
- <circle cx="165" cy="43" r="15" fill="#f3c6a7" stroke="#d28c78" stroke-width="3"/>
- <path d="M160 60 L185 91 L210 103 M180 88 L145 104 L130 130 M185 91 L220 65 L245 70 M180 88 L190 120 L220 130" />
- <path d="M155 60 Q180 54 193 74 L202 96 L175 103 L150 80 Z" fill="#e85c91" stroke="#e85c91"/>
- </g>
- <text x="18" y="157" fill="#667085" font-size="10" font-family="system-ui">ILUSTRAÇÃO ESQUEMÁTICA · ${name}</text>
- </svg>`;
+ const n=name.toLowerCase();
+ let type="machine";
+ if(n.includes("leg")||n.includes("press"))type="press";
+ else if(n.includes("extensora"))type="extension";
+ else if(n.includes("flexora")||n.includes("stiff")||n.includes("terra"))type="curl";
+ else if(n.includes("abdutora"))type="abductor";
+ else if(n.includes("puxada")||n.includes("remada"))type="cable";
+ else if(n.includes("supino"))type="bench";
+ else if(n.includes("desenvolvimento")||n.includes("elevação"))type="shoulder";
+ const machine={
+ press:`<path d="M45 144h270M72 139l48-72h72l52 72M112 139l44-66M230 73l39 66" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M180 45h80v45h-80z" fill="#4b566e" stroke="#202a40" stroke-width="4"/>`,
+ extension:`<path d="M95 142h180M112 142V70h80v72M112 94h112" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="120" y="62" width="75" height="18" rx="8" fill="#59647c"/><path d="M195 96l63 28" stroke="#3b465e" stroke-width="8"/>`,
+ curl:`<path d="M55 140h250M90 130l38-60h110l45 60M120 70h115" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="126" y="59" width="110" height="20" rx="8" fill="#59647c"/>`,
+ abductor:`<path d="M85 140h190M110 135V75h140v60M110 100h140" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="125" y="65" width="110" height="18" rx="7" fill="#59647c"/>`,
+ cable:`<path d="M85 140V30h190v110M85 52h190M180 52v48" stroke="#3b465e" stroke-width="8" fill="none"/><rect x="164" y="95" width="32" height="18" rx="5" fill="#59647c"/>`,
+ bench:`<path d="M55 135h250M95 135l-20 18M265 135l20 18M90 76h180M100 76V48M260 76V48" stroke="#3b465e" stroke-width="8" fill="none"/><path d="M80 45h200" stroke="#59647c" stroke-width="10"/>`,
+ shoulder:`<path d="M85 140V50h190v90M85 78h190M180 50V28" stroke="#3b465e" stroke-width="8" fill="none"/><rect x="157" y="23" width="46" height="15" rx="6" fill="#59647c"/>`,
+ machine:`<path d="M80 140V45h200v95M80 78h200" stroke="#3b465e" stroke-width="8" fill="none"/><rect x="155" y="45" width="50" height="18" rx="6" fill="#59647c"/>`
+ }[type];
+ return `<svg class="exercise-art" viewBox="0 0 360 170" role="img" aria-label="Ilustração de referência: ${name}">
+ <defs><linearGradient id="artbg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9fc"/><stop offset="1" stop-color="#f0f1f7"/></linearGradient></defs><rect width="360" height="170" rx="18" fill="url(#artbg)"/>
+ <g>${machine}</g>
+ <g stroke-linecap="round" stroke-linejoin="round">
+ <path d="M141 63q-13-17 0-29q18-13 31 2q5 11-2 22" fill="#5b382e" stroke="#5b382e" stroke-width="3"/>
+ <circle cx="158" cy="47" r="14" fill="#f2c3a3" stroke="#cc8e72" stroke-width="2"/>
+ <path d="M145 39q8-19 24-8l7 13-8-3-8-8-10 8z" fill="#5b382e"/>
+ <path d="M145 62q16-8 29 2l17 31-29 15-23-26z" fill="#ed4d8a" stroke="#d93e79" stroke-width="3"/>
+ <path d="M147 67l-20 28 18 18" fill="none" stroke="#f2c3a3" stroke-width="10"/>
+ <path d="M171 68l29 24 27-7" fill="none" stroke="#f2c3a3" stroke-width="10"/>
+ <path d="M160 104l-8 23 42 8" fill="none" stroke="#f2c3a3" stroke-width="13"/>
+ <path d="M177 104l26 17 28-4" fill="none" stroke="#f2c3a3" stroke-width="13"/>
+ <path d="M151 104l-8 22 51 8M177 104l26 17 28-4" fill="none" stroke="#202a40" stroke-width="15"/>
+ <path d="M194 132h15M226 117h13" stroke="#fff" stroke-width="5"/>
+ </g><text x="13" y="158" font-size="9" fill="#687187" font-family="system-ui">REFERÊNCIA ILUSTRADA · ${name}</text></svg>`;
 }
-let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV2";let data={};
+let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV4";let data={};
 try{data=JSON.parse(localStorage.getItem(storeKey)||"{}")}catch(e){}
 function save(){localStorage.setItem(storeKey,JSON.stringify(data))}
 function key(d,i){return d+"_"+i}
@@ -102,7 +117,7 @@ $("days").innerHTML=W.map((w,i)=>`<button class="day ${day===i?"active":""}" dat
 $("days").querySelectorAll("button").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()});
 let w=W[day],all=w.items.reduce((a,x)=>a+x[1],0),done=w.items.reduce((a,x,i)=>a+get(day,i).done.filter(Boolean).length,0);
 $("content").innerHTML=`<div class="row"><div><div class="muted">${w.day} · TREINO ${day+1}</div><h2>${w.name}</h2><div class="muted">${w.items.length} exercícios · cerca de 1 hora</div></div><span class="tag">${done}/${all} séries</span></div><div class="progress"><div class="bar" style="width:${100*done/all}%"></div></div>`+
-w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="card"><div class="ex-title"><div style="flex:1"><h3>${i+1}. ${x[0]}</h3><div class="muted" style="margin-top:5px">${x[1]} séries · ${x[2]}–${x[3]} repetições</div></div><span class="tag">${x[5]}</span></div>${exerciseIllustration(x[0])}<div class="muted">Intervalo: ${x[4]} s</div><p class="guide"><b>Como executar</b><br>${x[6]}</p><div class="muted">MARQUE AS SÉRIES</div><div class="sets">${g.done.map((v,j)=>`<button class="set ${v?"done":""}" data-ex="${i}" data-s="${j}">${v?"✓ ":""}Série ${j+1}</button>`).join("")}</div><label class="muted">Carga (kg, ou anotação)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício") }">▶ Buscar vídeo de execução</a></article>`}).join("")+
+w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="card"><div class="ex-title"><div style="flex:1"><h3>${i+1}. ${x[0]}</h3><div class="muted" style="margin-top:5px">${x[1]} séries · ${x[2]}–${x[3]} repetições</div></div><span class="tag">${x[5]}</span></div>${exerciseIllustration(x[0])}<div class="muted">Intervalo: ${x[4]} s</div><div class="tip"><b>Principais músculos</b><br>${x[5]}</div><p class="guide"><b>Como executar</b><br>${x[6]}</p><div class="muted">MARQUE AS SÉRIES</div><div class="sets">${g.done.map((v,j)=>`<button class="set ${v?"done":""}" data-ex="${i}" data-s="${j}">${v?"✓ ":""}Série ${j+1}</button>`).join("")}</div><label class="muted">Carga (kg, ou anotação)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício") }">▶ Buscar vídeo de execução</a></article>`}).join("")+
 `<div class="footer"><button class="secondary" id="clearDay">Limpar dia</button><button class="primary" id="nextDay">${day===4?"Concluir semana":"Próximo dia →"}</button></div>`;
 $("content").querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{let g=get(day,+b.dataset.ex);g.done[+b.dataset.s]=!g.done[+b.dataset.s];data[key(day,+b.dataset.ex)]=g;save();render()});
 $("content").querySelectorAll("[data-load]").forEach(inp=>inp.onchange=()=>{let g=get(day,+inp.dataset.load);g.loads[0]=inp.value;data[key(day,+inp.dataset.load)]=g;save()});

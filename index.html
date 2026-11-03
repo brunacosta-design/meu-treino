@@ -6,7 +6,20 @@
 <link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
 <title>Meu Treino</title>
 <style>
-:root{--green:#315640;--sage:#78966c;--beige:#f5f1e7;--paper:#fffdf7;--line:#e3e4d9;--ink:#263e30}*{box-sizing:border-box}body{margin:0;background:var(--beige);color:var(--ink);font:16px system-ui,-apple-system,sans-serif;padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom)}main{max-width:650px;margin:auto;padding:14px 0 28px}button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 13px}.top{display:flex;justify-content:space-between;align-items:center}.eyebrow,.muted{font-size:12px;color:#788477}.hero{background:var(--green);color:#fffaf0;padding:18px;border-radius:18px;margin:14px 0}.days{display:flex;gap:7px;overflow:auto;margin:15px 0}.day{background:#fffaf0;color:#415747;border:1px solid #d8dfd2;min-width:58px}.day.active,.primary{background:var(--green);color:white}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.tag{font-size:11px;background:#e6eddf;padding:5px 8px;border-radius:20px;color:var(--green)}.guide{font-size:13px;line-height:1.55;color:#4f6254;margin:12px 0}.sets{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.set{background:#f7f6ee;border:1px solid #d9dfd3;font-size:12px}.set.done{background:var(--green);color:white}.load{width:100%;border:1px solid #d9dfd3;background:#fff;border-radius:10px;padding:10px;color:var(--ink);margin:7px 0}.link{color:var(--green);font-size:13px;font-weight:650}.progress{height:6px;background:#e1e5d9;border-radius:9px;overflow:hidden;margin:10px 0}.bar{height:100%;background:var(--sage)}.secondary{background:#e6eddf;color:var(--green)}h1{font-size:24px;margin:3px 0}h3{margin:0;font-size:16px}.footer{display:flex;justify-content:space-between;gap:8px;margin:15px 0}.history{font-size:13px;line-height:1.6}.notice{font-size:12px;color:#69796a;margin:10px 2px}
+:root{--pink:#e85c91;--pink-light:#fde8f0;--navy:#18233d;--beige:#f8f7fa;--paper:#fff;--line:#e5e5ec;--ink:#18233d;--muted:#667085}
+*{box-sizing:border-box}body{margin:0;background:var(--beige);color:var(--ink);font:16px system-ui,-apple-system,sans-serif;padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom)}
+main{max-width:650px;margin:auto;padding:14px 0 28px}button,input{font:inherit}button{cursor:pointer;border:0;border-radius:14px;padding:10px 13px}
+.top{display:flex;justify-content:space-between;align-items:center}.eyebrow,.muted{font-size:12px;color:var(--muted)}
+h1{font-size:27px;margin:3px 0;font-weight:850;letter-spacing:-.7px}h2{font-size:24px;margin:3px 0;letter-spacing:-.5px}h3{margin:0;font-size:16px}
+.hero{background:linear-gradient(135deg,#18233d,#344568);color:#fff;padding:19px;border-radius:22px;margin:14px 0;box-shadow:0 8px 24px #18233d18}
+.days{display:flex;gap:7px;overflow:auto;margin:15px 0;padding-bottom:3px}.day{background:#f0eff3;color:var(--navy);border:1px solid transparent;min-width:68px;flex:1}.day.active,.primary{background:var(--pink);color:white}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:14px;margin:10px 0;box-shadow:0 3px 12px #18233d06}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.tag{font-size:11px;background:var(--pink-light);padding:5px 8px;border-radius:20px;color:#a3295b}
+.guide{font-size:13px;line-height:1.55;color:#4f5870;margin:12px 0}.sets{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.set{background:#f7f6fa;border:1px solid #dedfe8;font-size:12px;color:var(--navy)}.set.done{background:var(--pink);color:white;border-color:var(--pink)}
+.load{width:100%;border:1px solid #dedfe8;background:#fff;border-radius:12px;padding:10px;color:var(--ink);margin:7px 0}.link{color:#b83268;font-size:13px;font-weight:700;text-decoration:none}
+.progress{height:7px;background:#ecebf1;border-radius:9px;overflow:hidden;margin:10px 0}.bar{height:100%;background:var(--pink)}.secondary{background:var(--pink-light);color:#a3295b}
+.footer{display:flex;justify-content:space-between;gap:8px;margin:15px 0}.history{font-size:13px;line-height:1.6}.notice{font-size:12px;color:#697286;margin:10px 2px}
+.exercise-art{width:100%;height:150px;object-fit:contain;background:linear-gradient(135deg,#fff6fa,#f2f2f8);border-radius:16px;margin:12px 0 8px;display:block}
+.ex-title{display:flex;align-items:center;gap:10px}.mini-art{width:68px;height:58px;object-fit:contain;background:#f8f2f6;border-radius:12px;flex-shrink:0}
 </style></head>
 <body><main>
 <header class="top"><div><div class="eyebrow">SEU GUIA DE MUSCULAÇÃO</div><h1>Meu Treino <span style="color:#819775">✳</span></h1></div><div style="font-size:26px">🌿</div></header>
@@ -17,39 +30,69 @@
 <script>
 const W=[
 {day:"SEG",name:"Quadríceps + glúteos",items:[
-["Cadeira extensora",2,12,15,60,"Quadríceps","Ajuste encosto e rolo. Mantenha costas apoiadas, estenda os joelhos e segure 1–2 s no topo. Desça devagar."],
+["Cadeira extensora",3,12,15,60,"Quadríceps","Ajuste encosto e rolo. Mantenha costas apoiadas, estenda os joelhos e segure 1–2 s no topo. Desça devagar."],
 ["Leg 45°",3,10,12,90,"Quadríceps e glúteos","Apoie as costas. Desça sem tirar o quadril do banco. Empurre sem travar os joelhos."],
-["Hack machine",2,10,12,90,"Quadríceps e glúteos","Costas apoiadas, desça com controle e amplitude confortável; joelhos acompanham os pés."],
+["Hack machine",3,10,12,90,"Quadríceps e glúteos","Costas apoiadas, desça com controle e amplitude confortável; joelhos acompanham os pés."],
 ["Cadeira abdutora",3,12,15,60,"Glúteo médio","Incline levemente o tronco, abra os joelhos e segure 2 s. Evite impulso."],
-["Leg horizontal unilateral",2,10,10,90,"Pernas","Faça uma perna por vez, pelve estável e mesmo número de repetições nos dois lados."]]},
+["Leg horizontal unilateral",3,10,10,90,"Pernas","Faça uma perna por vez, pelve estável e mesmo número de repetições nos dois lados."]]},
 {day:"TER",name:"Superiores A",items:[
 ["Puxada pegada aberta",3,10,12,90,"Costas","Puxe em direção à parte superior do peito, cotovelos para baixo; não puxe atrás da cabeça."],
-["Remada baixa unilateral",2,10,12,75,"Costas","Tronco estável, cotovelo para trás sem girar o corpo."],
-["Supino articulado",2,10,12,75,"Peito e tríceps","Alças na altura do peito; empurre sem elevar os ombros e retorne controlando."],
-["Desenvolvimento máquina",2,10,12,75,"Ombros","Costas apoiadas, empurre para cima sem arquear a lombar."],
-["Rosca martelo",2,10,12,60,"Bíceps","Palmas voltadas uma para outra. Flexione cotovelos sem balançar."],
-["Tríceps pulley corda",2,10,12,60,"Tríceps","Cotovelos junto ao corpo; estenda e controle a volta."]]},
+["Remada baixa unilateral",3,10,12,75,"Costas","Tronco estável, cotovelo para trás sem girar o corpo."],
+["Supino articulado",3,10,12,75,"Peito e tríceps","Alças na altura do peito; empurre sem elevar os ombros e retorne controlando."],
+["Desenvolvimento máquina",3,10,12,75,"Ombros","Costas apoiadas, empurre para cima sem arquear a lombar."],
+["Rosca martelo",3,10,12,60,"Bíceps","Palmas voltadas uma para outra. Flexione cotovelos sem balançar."],
+["Tríceps pulley corda",3,10,12,60,"Tríceps","Cotovelos junto ao corpo; estenda e controle a volta."]]},
 {day:"QUA",name:"Posterior + glúteos",items:[
-["Flexora sentada",2,12,15,60,"Posterior","Flexione os joelhos com controle e retorne sem deixar a carga cair."],
+["Flexora sentada",3,12,15,60,"Posterior","Flexione os joelhos com controle e retorne sem deixar a carga cair."],
 ["Stiff com barra",3,8,10,120,"Posterior e glúteos","Quadril para trás, coluna neutra, joelhos levemente flexionados. Desça até manter boa técnica."],
-["Búlgaro com apoio",2,10,10,90,"Glúteos e quadríceps","Use apoio. Desça com controle, joelho alinhado com o pé."],
-["Agachamento sumô kettlebell",2,10,12,90,"Glúteos e pernas","Pés afastados, kettlebell próximo do corpo, joelhos seguindo os pés."],
-["Cadeira abdutora",2,12,15,60,"Glúteo médio","Incline levemente o tronco, abra com controle e segure brevemente."]]},
+["Búlgaro com apoio",3,10,10,90,"Glúteos e quadríceps","Use apoio. Desça com controle, joelho alinhado com o pé."],
+["Agachamento sumô kettlebell",3,10,12,90,"Glúteos e pernas","Pés afastados, kettlebell próximo do corpo, joelhos seguindo os pés."],
+["Cadeira abdutora",3,12,15,60,"Glúteo médio","Incline levemente o tronco, abra com controle e segure brevemente."]]},
 {day:"QUI",name:"Superiores B",items:[
-["Desenvolvimento máquina",2,10,12,75,"Ombros","Empurre para cima com controle, sem arquear a lombar."],
-["Elevação lateral na polia",2,12,15,60,"Ombros","Eleve lateralmente até altura confortável, sem impulso."],
+["Desenvolvimento máquina",3,10,12,75,"Ombros","Empurre para cima com controle, sem arquear a lombar."],
+["Elevação lateral na polia",3,12,15,60,"Ombros","Eleve lateralmente até altura confortável, sem impulso."],
 ["Supino articulado declinado",3,10,12,75,"Peito e tríceps","Ombros apoiados; empurre sem travar cotovelos."],
-["Remada alta com barra",2,10,12,75,"Costas e ombros","Tronco estável e amplitude confortável. Se incomodar, troque por face pull com orientação."],
-["Tríceps máquina",2,10,12,60,"Tríceps","Ajuste a máquina e estenda os cotovelos controlando o movimento."],
-["Rosca bíceps na polia",2,10,12,60,"Bíceps","Cotovelos próximos ao corpo; evite balançar o tronco."],
-["Pulldown com corda",2,12,15,60,"Costas","Puxe a corda para baixo com controle, tronco estável."]]},
+["Remada alta com barra",3,10,12,75,"Costas e ombros","Tronco estável e amplitude confortável. Se incomodar, troque por face pull com orientação."],
+["Tríceps máquina",3,10,12,60,"Tríceps","Ajuste a máquina e estenda os cotovelos controlando o movimento."],
+["Rosca bíceps na polia",3,10,12,60,"Bíceps","Cotovelos próximos ao corpo; evite balançar o tronco."],
+["Pulldown com corda",3,12,15,60,"Costas","Puxe a corda para baixo com controle, tronco estável."]]},
 {day:"SEX",name:"Glúteos + quadríceps",items:[
 ["Elevação pélvica",3,10,12,120,"Glúteo máximo","Costas apoiadas no banco; eleve o quadril, segure 1–2 s sem hiperestender a lombar."],
-["Terra sumô",2,10,12,120,"Glúteos e pernas","Pés afastados, coluna neutra, abdômen firme. Estenda o quadril sem inclinar para trás."],
-["Glúteo coice máquina",2,12,15,60,"Glúteos","Empurre para trás sem girar o quadril ou arquear a lombar."],
+["Terra sumô",3,10,12,120,"Glúteos e pernas","Pés afastados, coluna neutra, abdômen firme. Estenda o quadril sem inclinar para trás."],
+["Glúteo coice máquina",3,12,15,60,"Glúteos","Empurre para trás sem girar o quadril ou arquear a lombar."],
 ["Cadeira abdutora",3,12,15,60,"Glúteo médio","Abra as pernas com controle e segure brevemente."],
-["Cadeira extensora",2,12,15,60,"Quadríceps","Estenda os joelhos com controle e retorne lentamente."]]}];
-let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV1";let data={};
+["Cadeira extensora",3,12,15,60,"Quadríceps","Estenda os joelhos com controle e retorne lentamente."]]}];
+function exerciseIllustration(name){
+ const label=name.toLowerCase();
+ let machine="machine";
+ if(label.includes("leg")||label.includes("press")) machine="press";
+ else if(label.includes("extensora")) machine="chair";
+ else if(label.includes("flexora")) machine="curl";
+ else if(label.includes("barra")||label.includes("stiff")||label.includes("terra")||label.includes("sumô")||label.includes("sumo")) machine="bar";
+ else if(label.includes("puxada")||label.includes("pulldown")||label.includes("remada")) machine="cable";
+ else if(label.includes("supino")||label.includes("peito")) machine="bench";
+ else if(label.includes("elevação")||label.includes("desenvolvimento")) machine="shoulder";
+ return `<svg class="exercise-art" viewBox="0 0 360 170" role="img" aria-label="Ilustração de referência para ${name}">
+ <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8fb"/><stop offset="1" stop-color="#f1f2f8"/></linearGradient></defs>
+ <rect width="360" height="170" rx="18" fill="url(#bg)"/>
+ <g stroke="#38445d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+ ${machine==="press"?'<path d="M65 140 L120 140 L165 55 L210 55 L255 140 L310 140 M115 130 L165 65 M235 65 L275 130 M175 48 L235 48"/><path d="M210 42 L250 42 L250 70 L210 70 Z" fill="#59647c"/>':
+ machine==="chair"?'<path d="M100 130 L100 70 L160 70 L190 130 M100 95 L205 95 M125 130 L225 130"/><rect x="155" y="62" width="45" height="13" rx="5" fill="#59647c"/><path d="M195 95 L250 115"/>':
+ machine==="curl"?'<path d="M75 130 L290 130 M95 115 L130 65 L220 65 L260 115 M125 65 L125 45 M215 65 L215 45"/><rect x="120" y="58" width="105" height="15" rx="5" fill="#59647c"/>':
+ machine==="bar"?'<path d="M60 135 L300 135 M100 135 L130 90 M230 90 L260 135 M90 80 L270 80"/><circle cx="85" cy="80" r="18" fill="#59647c"/><circle cx="275" cy="80" r="18" fill="#59647c"/>':
+ machine==="cable"?'<path d="M80 135 L80 35 L280 35 L280 135 M80 55 L280 55 M180 55 L180 105"/><rect x="165" y="100" width="30" height="18" rx="4" fill="#59647c"/>':
+ machine==="bench"?'<path d="M70 125 L290 125 M110 125 L90 145 M250 125 L270 145 M90 70 L270 70 M100 70 L100 45 M260 70 L260 45"/><path d="M75 45 L285 45"/>':
+ '<path d="M95 135 L95 55 L265 55 L265 135 M95 90 L265 90 M180 55 L180 30"/><rect x="160" y="25" width="40" height="12" rx="5" fill="#59647c"/>'}
+ </g>
+ <g stroke="#b94c79" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+ <circle cx="165" cy="43" r="15" fill="#f3c6a7" stroke="#d28c78" stroke-width="3"/>
+ <path d="M160 60 L185 91 L210 103 M180 88 L145 104 L130 130 M185 91 L220 65 L245 70 M180 88 L190 120 L220 130" />
+ <path d="M155 60 Q180 54 193 74 L202 96 L175 103 L150 80 Z" fill="#e85c91" stroke="#e85c91"/>
+ </g>
+ <text x="18" y="157" fill="#667085" font-size="10" font-family="system-ui">ILUSTRAÇÃO ESQUEMÁTICA · ${name}</text>
+ </svg>`;
+}
+let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV2";let data={};
 try{data=JSON.parse(localStorage.getItem(storeKey)||"{}")}catch(e){}
 function save(){localStorage.setItem(storeKey,JSON.stringify(data))}
 function key(d,i){return d+"_"+i}
@@ -59,7 +102,7 @@ $("days").innerHTML=W.map((w,i)=>`<button class="day ${day===i?"active":""}" dat
 $("days").querySelectorAll("button").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()});
 let w=W[day],all=w.items.reduce((a,x)=>a+x[1],0),done=w.items.reduce((a,x,i)=>a+get(day,i).done.filter(Boolean).length,0);
 $("content").innerHTML=`<div class="row"><div><div class="muted">${w.day} · TREINO ${day+1}</div><h2>${w.name}</h2><div class="muted">${w.items.length} exercícios · cerca de 1 hora</div></div><span class="tag">${done}/${all} séries</span></div><div class="progress"><div class="bar" style="width:${100*done/all}%"></div></div>`+
-w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="card"><div class="row"><h3>${i+1}. ${x[0]}</h3><span class="tag">${x[5]}</span></div><div class="muted" style="margin-top:6px">${x[1]} séries · ${x[2]}–${x[3]} repetições · intervalo ${x[4]} s</div><p class="guide"><b>Execução</b><br>${x[6]}</p><div class="muted">MARQUE AS SÉRIES</div><div class="sets">${g.done.map((v,j)=>`<button class="set ${v?"done":""}" data-ex="${i}" data-s="${j}">${v?"✓ ":""}Série ${j+1}</button>`).join("")}</div><label class="muted">Carga (kg, ou anotação)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício") }">▶ Buscar vídeo de execução</a></article>`}).join("")+
+w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="card"><div class="ex-title"><div style="flex:1"><h3>${i+1}. ${x[0]}</h3><div class="muted" style="margin-top:5px">${x[1]} séries · ${x[2]}–${x[3]} repetições</div></div><span class="tag">${x[5]}</span></div>${exerciseIllustration(x[0])}<div class="muted">Intervalo: ${x[4]} s</div><p class="guide"><b>Como executar</b><br>${x[6]}</p><div class="muted">MARQUE AS SÉRIES</div><div class="sets">${g.done.map((v,j)=>`<button class="set ${v?"done":""}" data-ex="${i}" data-s="${j}">${v?"✓ ":""}Série ${j+1}</button>`).join("")}</div><label class="muted">Carga (kg, ou anotação)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício") }">▶ Buscar vídeo de execução</a></article>`}).join("")+
 `<div class="footer"><button class="secondary" id="clearDay">Limpar dia</button><button class="primary" id="nextDay">${day===4?"Concluir semana":"Próximo dia →"}</button></div>`;
 $("content").querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{let g=get(day,+b.dataset.ex);g.done[+b.dataset.s]=!g.done[+b.dataset.s];data[key(day,+b.dataset.ex)]=g;save();render()});
 $("content").querySelectorAll("[data-load]").forEach(inp=>inp.onchange=()=>{let g=get(day,+inp.dataset.load);g.loads[0]=inp.value;data[key(day,+inp.dataset.load)]=g;save()});

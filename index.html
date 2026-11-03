@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#315640"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
+<title>Meu Treino</title>
+<style>
+:root{--green:#315640;--sage:#78966c;--beige:#f5f1e7;--paper:#fffdf7;--line:#e3e4d9;--ink:#263e30}*{box-sizing:border-box}body{margin:0;background:var(--beige);color:var(--ink);font:16px system-ui,-apple-system,sans-serif;padding:env(safe-area-inset-top) 12px env(safe-area-inset-bottom)}main{max-width:650px;margin:auto;padding:14px 0 28px}button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 13px}.top{display:flex;justify-content:space-between;align-items:center}.eyebrow,.muted{font-size:12px;color:#788477}.hero{background:var(--green);color:#fffaf0;padding:18px;border-radius:18px;margin:14px 0}.days{display:flex;gap:7px;overflow:auto;margin:15px 0}.day{background:#fffaf0;color:#415747;border:1px solid #d8dfd2;min-width:58px}.day.active,.primary{background:var(--green);color:white}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px;margin:10px 0}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.tag{font-size:11px;background:#e6eddf;padding:5px 8px;border-radius:20px;color:var(--green)}.guide{font-size:13px;line-height:1.55;color:#4f6254;margin:12px 0}.sets{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.set{background:#f7f6ee;border:1px solid #d9dfd3;font-size:12px}.set.done{background:var(--green);color:white}.load{width:100%;border:1px solid #d9dfd3;background:#fff;border-radius:10px;padding:10px;color:var(--ink);margin:7px 0}.link{color:var(--green);font-size:13px;font-weight:650}.progress{height:6px;background:#e1e5d9;border-radius:9px;overflow:hidden;margin:10px 0}.bar{height:100%;background:var(--sage)}.secondary{background:#e6eddf;color:var(--green)}h1{font-size:24px;margin:3px 0}h3{margin:0;font-size:16px}.footer{display:flex;justify-content:space-between;gap:8px;margin:15px 0}.history{font-size:13px;line-height:1.6}.notice{font-size:12px;color:#69796a;margin:10px 2px}
+</style></head>
+<body><main>
+<header class="top"><div><div class="eyebrow">SEU GUIA DE MUSCULAÇÃO</div><h1>Meu Treino <span style="color:#819775">✳</span></h1></div><div style="font-size:26px">🌿</div></header>
+<div class="hero"><div style="font-size:11px;letter-spacing:1px;color:#d8e5d3">SUA ROTINA</div><strong style="font-size:22px;display:block;margin:5px 0">Vamos treinar?</strong><div style="font-size:13px;color:#e1eadb">5 dias · força · constância</div></div>
+<nav class="days" id="days"></nav><section id="content"></section><section class="card"><div class="row"><h3>Histórico de treinos</h3><button class="secondary" id="historyBtn">Ver histórico</button></div><div id="history" class="history" hidden></div></section>
+<div class="notice">Se estiver retornando após pausa, comece leve. Use cargas controladas e ajuste os exercícios com sua personal. O registro fica salvo neste aparelho/navegador.</div>
+</main>
+<script>
+const W=[
+{day:"SEG",name:"Quadríceps + glúteos",items:[
+["Cadeira extensora",2,12,15,60,"Quadríceps","Ajuste encosto e rolo. Mantenha costas apoiadas, estenda os joelhos e segure 1–2 s no topo. Desça devagar."],
+["Leg 45°",3,10,12,90,"Quadríceps e glúteos","Apoie as costas. Desça sem tirar o quadril do banco. Empurre sem travar os joelhos."],
+["Hack machine",2,10,12,90,"Quadríceps e glúteos","Costas apoiadas, desça com controle e amplitude confortável; joelhos acompanham os pés."],
+["Cadeira abdutora",3,12,15,60,"Glúteo médio","Incline levemente o tronco, abra os joelhos e segure 2 s. Evite impulso."],
+["Leg horizontal unilateral",2,10,10,90,"Pernas","Faça uma perna por vez, pelve estável e mesmo número de repetições nos dois lados."]]},
+{day:"TER",name:"Superiores A",items:[
+["Puxada pegada aberta",3,10,12,90,"Costas","Puxe em direção à parte superior do peito, cotovelos para baixo; não puxe atrás da cabeça."],
+["Remada baixa unilateral",2,10,12,75,"Costas","Tronco estável, cotovelo para trás sem girar o corpo."],
+["Supino articulado",2,10,12,75,"Peito e tríceps","Alças na altura do peito; empurre sem elevar os ombros e retorne controlando."],
+["Desenvolvimento máquina",2,10,12,75,"Ombros","Costas apoiadas, empurre para cima sem arquear a lombar."],
+["Rosca martelo",2,10,12,60,"Bíceps","Palmas voltadas uma para outra. Flexione cotovelos sem balançar."],
+["Tríceps pulley corda",2,10,12,60,"Tríceps","Cotovelos junto ao corpo; estenda e controle a volta."]]},
+{day:"QUA",name:"Posterior + glúteos",items:[
+["Flexora sentada",2,12,15,60,"Posterior","Flexione os joelhos com controle e retorne sem deixar a carga cair."],
+["Stiff com barra",3,8,10,120,"Posterior e glúteos","Quadril para trás, coluna neutra, joelhos levemente flexionados. Desça até manter boa técnica."],
+["Búlgaro com apoio",2,10,10,90,"Glúteos e quadríceps","Use apoio. Desça com controle, joelho alinhado com o pé."],
+["Agachamento sumô kettlebell",2,10,12,90,"Glúteos e pernas","Pés afastados, kettlebell próximo do corpo, joelhos seguindo os pés."],
+["Cadeira abdutora",2,12,15,60,"Glúteo médio","Incline levemente o tronco, abra com controle e segure brevemente."]]},
+{day:"QUI",name:"Superiores B",items:[
+["Desenvolvimento máquina",2,10,12,75,"Ombros","Empurre para cima com controle, sem arquear a lombar."],
+["Elevação lateral na polia",2,12,15,60,"Ombros","Eleve lateralmente até altura confortável, sem impulso."],
+["Supino articulado declinado",3,10,12,75,"Peito e tríceps","Ombros apoiados; empurre sem travar cotovelos."],
+["Remada alta com barra",2,10,12,75,"Costas e ombros","Tronco estável e amplitude confortável. Se incomodar, troque por face pull com orientação."],
+["Tríceps máquina",2,10,12,60,"Tríceps","Ajuste a máquina e estenda os cotovelos controlando o movimento."],
+["Rosca bíceps na polia",2,10,12,60,"Bíceps","Cotovelos próximos ao corpo; evite balançar o tronco."],
+["Pulldown com corda",2,12,15,60,"Costas","Puxe a corda para baixo com controle, tronco estável."]]},
+{day:"SEX",name:"Glúteos + quadríceps",items:[
+["Elevação pélvica",3,10,12,120,"Glúteo máximo","Costas apoiadas no banco; eleve o quadril, segure 1–2 s sem hiperestender a lombar."],
+["Terra sumô",2,10,12,120,"Glúteos e pernas","Pés afastados, coluna neutra, abdômen firme. Estenda o quadril sem inclinar para trás."],
+["Glúteo coice máquina",2,12,15,60,"Glúteos","Empurre para trás sem girar o quadril ou arquear a lombar."],
+["Cadeira abdutora",3,12,15,60,"Glúteo médio","Abra as pernas com controle e segure brevemente."],
+["Cadeira extensora",2,12,15,60,"Quadríceps","Estenda os joelhos com controle e retorne lentamente."]]}];
+let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV1";let data={};
+try{data=JSON.parse(localStorage.getItem(storeKey)||"{}")}catch(e){}
+function save(){localStorage.setItem(storeKey,JSON.stringify(data))}
+function key(d,i){return d+"_"+i}
+function get(d,i){return data[key(d,i)]||{done:[],loads:[]}}
+function render(){
+$("days").innerHTML=W.map((w,i)=>`<button class="day ${day===i?"active":""}" data-day="${i}">${w.day}</button>`).join("");
+$("days").querySelectorAll("button").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()});
+let w=W[day],all=w.items.reduce((a,x)=>a+x[1],0),done=w.items.reduce((a,x,i)=>a+get(day,i).done.filter(Boolean).length,0);
+$("content").innerHTML=`<div class="row"><div><div class="muted">${w.day} · TREINO ${day+1}</div><h2>${w.name}</h2><div class="muted">${w.items.length} exercícios · cerca de 1 hora</div></div><span class="tag">${done}/${all} séries</span></div><div class="progress"><div class="bar" style="width:${100*done/all}%"></div></div>`+
+w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="card"><div class="row"><h3>${i+1}. ${x[0]}</h3><span class="tag">${x[5]}</span></div><div class="muted" style="margin-top:6px">${x[1]} séries · ${x[2]}–${x[3]} repetições · intervalo ${x[4]} s</div><p class="guide"><b>Execução</b><br>${x[6]}</p><div class="muted">MARQUE AS SÉRIES</div><div class="sets">${g.done.map((v,j)=>`<button class="set ${v?"done":""}" data-ex="${i}" data-s="${j}">${v?"✓ ":""}Série ${j+1}</button>`).join("")}</div><label class="muted">Carga (kg, ou anotação)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício") }">▶ Buscar vídeo de execução</a></article>`}).join("")+
+`<div class="footer"><button class="secondary" id="clearDay">Limpar dia</button><button class="primary" id="nextDay">${day===4?"Concluir semana":"Próximo dia →"}</button></div>`;
+$("content").querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{let g=get(day,+b.dataset.ex);g.done[+b.dataset.s]=!g.done[+b.dataset.s];data[key(day,+b.dataset.ex)]=g;save();render()});
+$("content").querySelectorAll("[data-load]").forEach(inp=>inp.onchange=()=>{let g=get(day,+inp.dataset.load);g.loads[0]=inp.value;data[key(day,+inp.dataset.load)]=g;save()});
+$("clearDay").onclick=()=>{w.items.forEach((x,i)=>delete data[key(day,i)]);save();render()};
+$("nextDay").onclick=()=>{if(day<4){day++;render()}else{save();alert("Semana concluída! Confira o histórico abaixo.")}};
+}
+$("historyBtn").onclick=()=>{let h=$("history");h.hidden=!h.hidden;if(!h.hidden){let entries=[];W.forEach((w,d)=>w.items.forEach((x,i)=>{let g=get(d,i);if(g.done.some(Boolean)||g.loads.some(Boolean))entries.push(`${w.day} — ${x[0]}: ${g.done.filter(Boolean).length}/${x[1]} séries; carga ${g.loads[0]||"não anotada"}`)}));h.innerHTML=entries.length?entries.join("<br>"):"Ainda não há registros. Marque séries e anote cargas durante seus treinos."}};
+render();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script></body></html>

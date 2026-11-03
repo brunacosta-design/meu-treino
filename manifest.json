@@ -1,0 +1,10 @@
+{
+  "name": "Meu Treino",
+  "short_name": "Meu Treino",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f1e7",
+  "theme_color": "#315640",
+  "description": "Treinos semanais personalizados e registro de cargas."
+}

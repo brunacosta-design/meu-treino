@@ -1,0 +1,22 @@
+# Meu Treino — PWA para iPhone
+
+## Publicar grátis no GitHub Pages
+1. Entre em https://github.com e crie uma conta ou faça login.
+2. Clique em **New repository**. Nome sugerido: `meu-treino`. Marque **Public** e crie o repositório.
+3. No repositório, escolha **Add file → Upload files**.
+4. Envie todos os arquivos desta pasta (index.html, manifest.json, sw.js, icon-192.png, icon-512.png e .nojekyll). Confirme em **Commit changes**.
+5. Vá a **Settings → Pages**.
+6. Em **Build and deployment**, selecione **Deploy from a branch**; Branch: `main`; pasta: `/ (root)`; clique **Save**.
+7. Aguarde a publicação e abra o endereço indicado na seção Pages (normalmente https://SEU-USUARIO.github.io/meu-treino/).
+
+## Instalar no iPhone
+1. Abra o endereço publicado no Safari do iPhone.
+2. Toque em Compartilhar.
+3. Escolha **Adicionar à Tela de Início**.
+4. Se aparecer, ative **Abrir como App da Web** e toque em **Adicionar**.
+
+## Notas
+- As cargas e marcações são armazenadas no armazenamento local do navegador/aplicativo neste dispositivo. Não sincronizam entre aparelhos.
+- Para manter registros, evite limpar os dados do Safari ou apagar o app web.
+- A primeira carga do app exige internet; o service worker tenta disponibilizar os arquivos em cache para uso posterior.
+- Este guia não substitui a avaliação da personal; adapte exercícios e cargas à sua técnica e recuperação.

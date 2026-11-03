@@ -29,6 +29,8 @@ h1{font-size:27px;margin:3px 0;font-weight:850;letter-spacing:-.8px}h2{font-size
 .step{display:flex;gap:10px;margin:10px 0;font-size:14px;line-height:1.35}.stepnum{flex:0 0 27px;height:27px;border-radius:50%;background:linear-gradient(140deg,#ff9fc4,#ed4d8a);color:#fff;font-weight:800;display:grid;place-items:center}
 .tip{background:#fde7f0;color:#30384c;border-radius:15px;padding:12px;font-size:13px;margin:12px 0}.setrow{display:flex;align-items:center;gap:9px;padding:10px 5px;border-bottom:1px solid var(--line)}.setrow:last-child{border-bottom:0}.setrow input[type=checkbox]{width:22px;height:22px;accent-color:var(--pink)}.setrow label{flex:1;font-weight:750}
 @media(min-width:620px){main{padding-top:22px}.exercise-art{height:250px}}
+ 
+.home-summary{display:flex;align-items:end;justify-content:space-between;margin:22px 2px 12px}.home-summary h2{font-size:24px;margin:2px 0}.exercise-list{border:1px solid var(--line);border-radius:16px;background:#fff;padding:4px 9px}.exercise-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);cursor:pointer;min-height:76px}.exercise-row:last-child{border-bottom:0}.mini-art{width:74px;height:62px;object-fit:contain;border-radius:12px;background:#f8f2f6;flex-shrink:0}.exercise-copy{flex:1;min-width:0;font-size:13px;color:#222b40}.exercise-copy h3{font-size:14px;line-height:1.2;margin-bottom:4px}.chevron{font-size:26px;color:#343b4b;padding:0 3px}.exercise-detail[hidden]{display:none}.detail-title{display:flex;align-items:center;gap:8px}.detail-title h2{flex:1;text-align:center;font-size:20px}.heart{font-size:26px;color:var(--pink)}.bottom-nav{position:fixed;bottom:0;left:0;right:0;max-width:680px;margin:auto;display:flex;justify-content:space-around;background:#ffffffed;backdrop-filter:blur(12px);border:1px solid #e2e3e9;border-radius:20px 20px 0 0;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:8}.bottom-nav button{background:transparent;color:#505767;display:flex;flex-direction:column;align-items:center;font-size:11px;padding:3px 8px;gap:1px}.bottom-nav button.active{color:var(--pink);font-weight:800}.bottom-nav b{font-size:20px;line-height:1}.days{margin-bottom:22px}.day{min-width:57px;padding:8px 6px;font-size:12px}.day.active{background:#ffb6d1;color:#101a34}
 </style></head>
 <body><main>
 <header class="top"><div><div class="eyebrow">SEU GUIA DE MUSCULAÇÃO</div><h1>Meu Treino <span style="display:inline-block;background:#fde7f0;color:#ed4d8a;border-radius:12px;padding:4px 8px;font-size:20px">✣</span></h1></div><div style="font-size:25px;color:#18233d">⚙</div></header>
@@ -71,43 +73,15 @@ const W=[
 ["Glúteo coice máquina",3,12,15,60,"Glúteos","Empurre para trás sem girar o quadril ou arquear a lombar."],
 ["Cadeira abdutora",3,12,15,60,"Glúteo médio","Abra as pernas com controle e segure brevemente."],
 ["Cadeira extensora",3,12,15,60,"Quadríceps","Estenda os joelhos com controle e retorne lentamente."]]}];
-function exerciseIllustration(name){
- const n=name.toLowerCase();
- let type="machine";
- if(n.includes("leg")||n.includes("press"))type="press";
- else if(n.includes("extensora"))type="extension";
- else if(n.includes("flexora")||n.includes("stiff")||n.includes("terra"))type="curl";
- else if(n.includes("abdutora"))type="abductor";
- else if(n.includes("puxada")||n.includes("remada"))type="cable";
- else if(n.includes("supino"))type="bench";
- else if(n.includes("desenvolvimento")||n.includes("elevação"))type="shoulder";
- const machine={
- press:`<path d="M45 144h270M72 139l48-72h72l52 72M112 139l44-66M230 73l39 66" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M180 45h80v45h-80z" fill="#4b566e" stroke="#202a40" stroke-width="4"/>`,
- extension:`<path d="M95 142h180M112 142V70h80v72M112 94h112" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="120" y="62" width="75" height="18" rx="8" fill="#59647c"/><path d="M195 96l63 28" stroke="#3b465e" stroke-width="8"/>`,
- curl:`<path d="M55 140h250M90 130l38-60h110l45 60M120 70h115" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="126" y="59" width="110" height="20" rx="8" fill="#59647c"/>`,
- abductor:`<path d="M85 140h190M110 135V75h140v60M110 100h140" stroke="#3b465e" stroke-width="8" fill="none" stroke-linecap="round"/><rect x="125" y="65" width="110" height="18" rx="7" fill="#59647c"/>`,
- cable:`<path d="M85 140V30h190v110M85 52h190M180 52v48" stroke="#3b465e" stroke-width="8" fill="none"/><rect x="164" y="95" width="32" height="18" rx="5" fill="#59647c"/>`,
- bench:`<path d="M55 135h250M95 135l-20 18M265 135l20 18M90 76h180M100 76V48M260 76V48" stroke="#3b465e" stroke-width="8" fill="none"/><path d="M80 45h200" stroke="#59647c" stroke-width="10"/>`,
- shoulder:`<path d="M85 140V50h190v90M85 78h190M180 50V28" stroke="#3b465e" stroke-width="8" fill="none"/><rect x="157" y="23" width="46" height="15" rx="6" fill="#59647c"/>`,
- machine:`<path d="M80 140V45h200v95M80 78h200" stroke="#3b465e" stroke-width="8" fill="none"/><rect x="155" y="45" width="50" height="18" rx="6" fill="#59647c"/>`
- }[type];
- return `<svg class="exercise-art" viewBox="0 0 360 170" role="img" aria-label="Ilustração de referência: ${name}">
- <defs><linearGradient id="artbg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9fc"/><stop offset="1" stop-color="#f0f1f7"/></linearGradient></defs><rect width="360" height="170" rx="18" fill="url(#artbg)"/>
- <g>${machine}</g>
- <g stroke-linecap="round" stroke-linejoin="round">
- <path d="M141 63q-13-17 0-29q18-13 31 2q5 11-2 22" fill="#5b382e" stroke="#5b382e" stroke-width="3"/>
- <circle cx="158" cy="47" r="14" fill="#f2c3a3" stroke="#cc8e72" stroke-width="2"/>
- <path d="M145 39q8-19 24-8l7 13-8-3-8-8-10 8z" fill="#5b382e"/>
- <path d="M145 62q16-8 29 2l17 31-29 15-23-26z" fill="#ed4d8a" stroke="#d93e79" stroke-width="3"/>
- <path d="M147 67l-20 28 18 18" fill="none" stroke="#f2c3a3" stroke-width="10"/>
- <path d="M171 68l29 24 27-7" fill="none" stroke="#f2c3a3" stroke-width="10"/>
- <path d="M160 104l-8 23 42 8" fill="none" stroke="#f2c3a3" stroke-width="13"/>
- <path d="M177 104l26 17 28-4" fill="none" stroke="#f2c3a3" stroke-width="13"/>
- <path d="M151 104l-8 22 51 8M177 104l26 17 28-4" fill="none" stroke="#202a40" stroke-width="15"/>
- <path d="M194 132h15M226 117h13" stroke="#fff" stroke-width="5"/>
- </g><text x="13" y="158" font-size="9" fill="#687187" font-family="system-ui">REFERÊNCIA ILUSTRADA · ${name}</text></svg>`;
+const imageMap = {
+"Cadeira extensora":"extensora",\n"Leg 45°":"leg_press",\n"Hack machine":"hack",\n"Cadeira abdutora":"abdutora",\n"Leg horizontal unilateral":"leg_unilateral",\n"Puxada pegada aberta":"puxada",\n"Remada baixa unilateral":"remada",\n"Supino articulado":"supino",\n"Desenvolvimento máquina":"desenvolvimento",\n"Rosca martelo":"rosca_martelo",\n"Tríceps pulley corda":"triceps_polia",\n"Flexora sentada":"flexora_sentada",\n"Stiff com barra":"stiff",\n"Búlgaro com apoio":"bulgaro",\n"Agachamento sumô kettlebell":"sumo_kb",\n"Elevação lateral na polia":"lateral_polia",\n"Supino articulado declinado":"supino_declinado",\n"Remada alta com barra":"remada_alta",\n"Tríceps máquina":"triceps_maquina",\n"Rosca bíceps na polia":"rosca_polia",\n"Pulldown com corda":"pulldown_corda",\n"Elevação pélvica":"hip_thrust",\n"Terra sumô":"terra_sumô",\n"Glúteo coice máquina":"triceps_maquina"
+};
+function exerciseIllustration(name, cls="exercise-art"){
+ const file=imageMap[name] || "leg_press";
+ return `<img class="${cls}" src="assets/${file}.webp" alt="Ilustração de referência: ${name}" loading="lazy">`;
 }
-let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV4";let data={};
+
+let day=0;const $=id=>document.getElementById(id);const storeKey="meuTreinoDataV5";let data={};
 try{data=JSON.parse(localStorage.getItem(storeKey)||"{}")}catch(e){}
 function save(){localStorage.setItem(storeKey,JSON.stringify(data))}
 function key(d,i){return d+"_"+i}
@@ -116,10 +90,12 @@ function render(){
 $("days").innerHTML=W.map((w,i)=>`<button class="day ${day===i?"active":""}" data-day="${i}">${w.day}</button>`).join("");
 $("days").querySelectorAll("button").forEach(b=>b.onclick=()=>{day=+b.dataset.day;render()});
 let w=W[day],all=w.items.reduce((a,x)=>a+x[1],0),done=w.items.reduce((a,x,i)=>a+get(day,i).done.filter(Boolean).length,0);
-$("content").innerHTML=`<div class="row"><div><div class="muted">${w.day} · TREINO ${day+1}</div><h2>${w.name}</h2><div class="muted">${w.items.length} exercícios · cerca de 1 hora</div></div><span class="tag">${done}/${all} séries</span></div><div class="progress"><div class="bar" style="width:${100*done/all}%"></div></div>`+
-w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="card"><div class="ex-title"><div style="flex:1"><h3>${i+1}. ${x[0]}</h3><div class="muted" style="margin-top:5px">${x[1]} séries · ${x[2]}–${x[3]} repetições</div></div><span class="tag">${x[5]}</span></div>${exerciseIllustration(x[0])}<div class="muted">Intervalo: ${x[4]} s</div><div class="tip"><b>Principais músculos</b><br>${x[5]}</div><p class="guide"><b>Como executar</b><br>${x[6]}</p><div class="muted">MARQUE AS SÉRIES</div><div class="sets">${g.done.map((v,j)=>`<button class="set ${v?"done":""}" data-ex="${i}" data-s="${j}">${v?"✓ ":""}Série ${j+1}</button>`).join("")}</div><label class="muted">Carga (kg, ou anotação)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício") }">▶ Buscar vídeo de execução</a></article>`}).join("")+
-`<div class="footer"><button class="secondary" id="clearDay">Limpar dia</button><button class="primary" id="nextDay">${day===4?"Concluir semana":"Próximo dia →"}</button></div>`;
-$("content").querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{let g=get(day,+b.dataset.ex);g.done[+b.dataset.s]=!g.done[+b.dataset.s];data[key(day,+b.dataset.ex)]=g;save();render()});
+$("content").innerHTML=`<div class="home-summary"><div><div class="muted">Treino do dia</div><h2>${w.name}</h2></div><div class="muted">◷ ~ 60–75 min</div></div><div class="progress"><div class="bar" style="width:${100*done/all}%"></div></div><div class="exercise-list">`+
+w.items.map((x,i)=>{let g=get(day,i);while(g.done.length<x[1])g.done.push(false);return `<article class="exercise-row" data-open-ex="${i}">${exerciseIllustration(x[0],"mini-art")}<div class="exercise-copy"><h3>${x[0]}</h3><div>${x[1]} séries × ${x[2]}–${x[3]} repetições</div></div><span class="chevron">›</span></article><section class="exercise-detail card" id="detail-${i}" hidden><div class="detail-title"><button class="secondary" data-back="${i}">‹ Voltar</button><h2>${x[0]}</h2><span class="heart">♡</span></div>${exerciseIllustration(x[0])}<div class="pink-banner">▱　${x[1]} séries × ${x[2]}–${x[3]} repetições</div><h3>Como executar</h3><div class="guide">${x[6]}</div><div class="tip"><b>Principais músculos</b><br>${x[5]}<br><b>Dica:</b> priorize movimento controlado e postura confortável.</div><h3> Séries </h3>${g.done.map((v,j)=>`<div class="setrow"><label>Série ${j+1}</label><span>${x[2]}–${x[3]} repetições</span><input type="checkbox" data-ex="${i}" data-s="${j}" ${v?"checked":""}></div>`).join("")}<label class="muted">Carga (kg)</label><input class="load" data-load="${i}" placeholder="Ex.: 25 kg" value="${g.loads[0]||""}"><a class="link" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(x[0]+" execução exercício")}">▶ Buscar vídeo de execução</a></section>`}).join("")+
+`</div><div class="footer"><button class="secondary" id="clearDay">Limpar dia</button><button class="primary" id="nextDay">${day===4?"Concluir semana":"Próximo dia →"}</button></div>`;
+$("content").querySelectorAll("[data-open-ex]").forEach(row=>row.onclick=()=>{const i=+row.dataset.openEx;document.querySelectorAll(".exercise-row").forEach(r=>r.hidden=true);document.querySelectorAll(".exercise-detail").forEach(d=>d.hidden=true);const panel=$("detail-"+i);panel.hidden=false;panel.scrollIntoView({behavior:"smooth",block:"start"});});
+$("content").querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>{document.querySelectorAll(".exercise-row").forEach(r=>r.hidden=false);document.querySelectorAll(".exercise-detail").forEach(d=>d.hidden=true);});
+$("content").querySelectorAll("[data-ex]").forEach(b=>b.onchange=()=>{let g=get(day,+b.dataset.ex);g.done[+b.dataset.s]=b.checked;data[key(day,+b.dataset.ex)]=g;save();});
 $("content").querySelectorAll("[data-load]").forEach(inp=>inp.onchange=()=>{let g=get(day,+inp.dataset.load);g.loads[0]=inp.value;data[key(day,+inp.dataset.load)]=g;save()});
 $("clearDay").onclick=()=>{w.items.forEach((x,i)=>delete data[key(day,i)]);save();render()};
 $("nextDay").onclick=()=>{if(day<4){day++;render()}else{save();alert("Semana concluída! Confira o histórico abaixo.")}};
